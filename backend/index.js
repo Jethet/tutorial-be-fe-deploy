@@ -18,3 +18,5 @@ app.listen(port, () => {
 });
 
 module.exports = app;
+
+// use command 'nodemon index.js' to run app
