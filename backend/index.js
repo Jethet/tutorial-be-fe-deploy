@@ -6,6 +6,8 @@ const port = process.env.PORT || 3001;
 const usersRouter = require("./routes/users");
 
 const app = express();
+require("dotenv").config();
+
 
 app.use(logger("dev"));
 app.use(cors());
@@ -16,6 +18,10 @@ app.use("/users", usersRouter);
 app.listen(port, () => {
   console.log(`Running on ${port}`);
 });
+
+app.use((req, res, next) => {
+  res.sendFile(__dirname + "/public/index.html")
+})
 
 module.exports = app;
 
