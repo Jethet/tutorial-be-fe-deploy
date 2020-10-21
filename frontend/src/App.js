@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "./App.css"
 
 /* Initialize all the states inside the constructor: STATES TO STORE DATA are
 1) list: if the state list is true, the list of users component will be displayed.
@@ -57,14 +58,25 @@ export default class App extends Component {
       <div className="container">
         {this.state.list ? (
           <div className="list-group">
-            {this.state.users.map((user) => {
+            {this.state.users.map((user, index) => (
               <li
-                onClick={() => this.showCard(user._id)}
+                onClick={() => this.showCard(user._id)} key={index}
                 className="list-group-item list-group-item-action"
               >
                 {user.name}
-              </li>;
-            })}
+              </li>
+            ))}
+          </div>
+        ) : null}
+        {this.state.card ? (
+          <div className="card" style={{ width: "10rem" }}>
+            <div className="card-body">
+              <h5 className="card-title">{this.state.user.name}</h5>
+              <p className="card-text">{this.state.user.points}</p>
+              <button onClick={() => this.showList()} className="btn btn-primary">
+                Back
+              </button>
+            </div>
           </div>
         ) : null}
       </div>
