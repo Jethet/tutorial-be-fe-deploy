@@ -20,13 +20,13 @@ router.get("/list", async (req, res) => {
 // the id that is passed from frontend can be accessed as req.params.id
 // it needs to convert to number to compare with database _id because these are numbers
 
-router.get("/list/:id", async (req, res) => {
+router.get("/users/:id", async (req, res) => {
   let { id } = req.params;
   id = Number(id);
   try {
     let user = users.find((user) => user._id === id);
     res.status(200).json({
-      data: user,
+      data: user
     });
   } catch (err) {
     res.status(400).json({
